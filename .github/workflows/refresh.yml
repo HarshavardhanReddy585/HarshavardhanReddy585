@@ -1,0 +1,68 @@
+name: Refresh profile
+
+on:
+  schedule:
+    - cron: "30 2 * * *" # 08:00 IST every day
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["README.tpl.md", "scripts/**", ".github/workflows/refresh.yml"]
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: refresh-profile
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Rebuild README and cards
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/build.py --health > health.md
+
+      - name: Commit if anything changed
+        run: |
+          git add README.md assets
+          if git diff --cached --quiet; then
+            echo "No changes."
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -m "Refresh profile $(date -u +%F)"
+            git push
+          fi
+
+      - name: Update the health check issue
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh label create profile-health --color 0E8A16 --description "Daily profile health check" --force
+          issue=$(gh issue list --label profile-health --state all --limit 1 --json number --jq '.[0].number // empty')
+          if [ -s health.md ]; then
+            {
+              echo "The daily profile refresh found these gaps in my public repos. Fix one and it drops off tomorrow; this issue closes itself when the list is empty."
+              echo
+              cat health.md
+              echo
+              echo "<sub>Updated $(date -u +%F) by the [Refresh profile]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/workflows/refresh.yml) workflow.</sub>"
+            } > body.md
+            if [ -z "$issue" ]; then
+              gh issue create --title "Profile health check" --label profile-health --body-file body.md
+            else
+              gh issue edit "$issue" --body-file body.md
+              gh issue reopen "$issue" 2>/dev/null || true
+            fi
+          elif [ -n "$issue" ]; then
+            gh issue close "$issue" --comment "All repos pass the health check as of $(date -u +%F). 🎉" 2>/dev/null || true
+          fi
