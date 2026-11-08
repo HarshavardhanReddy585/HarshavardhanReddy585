@@ -18,11 +18,11 @@ I like projects that end in a measured answer: same test set, same budget, numbe
 
 ### 🛠️ Recently shipped
 
-- **[Bandit-The-Game](https://github.com/HarshavardhanReddy585/Bandit-The-Game)**: Add README <sub>6d ago</sub>
-- **[cryptonite_taskphase_Harshavardhan](https://github.com/HarshavardhanReddy585/cryptonite_taskphase_Harshavardhan)**: Add README with module index <sub>6d ago</sub>
-- **[PicoCTF](https://github.com/HarshavardhanReddy585/PicoCTF)**: Add challenge index to README <sub>6d ago</sub>
-- **[IS_LAB_PROJECT](https://github.com/HarshavardhanReddy585/IS_LAB_PROJECT)**: Add top-level README <sub>6d ago</sub>
-- **[REMS](https://github.com/HarshavardhanReddy585/REMS)**: Stop tracking .env and \_\_pycache\_\_; add .gitignore, .env.example and README <sub>6d ago</sub>
+- **[Bandit-The-Game](https://github.com/HarshavardhanReddy585/Bandit-The-Game)**: Add README <sub>7d ago</sub>
+- **[cryptonite_taskphase_Harshavardhan](https://github.com/HarshavardhanReddy585/cryptonite_taskphase_Harshavardhan)**: Add README with module index <sub>7d ago</sub>
+- **[PicoCTF](https://github.com/HarshavardhanReddy585/PicoCTF)**: Add challenge index to README <sub>7d ago</sub>
+- **[IS_LAB_PROJECT](https://github.com/HarshavardhanReddy585/IS_LAB_PROJECT)**: Add top-level README <sub>7d ago</sub>
+- **[REMS](https://github.com/HarshavardhanReddy585/REMS)**: Stop tracking .env and \_\_pycache\_\_; add .gitignore, .env.example and README <sub>7d ago</sub>
 
 <p align="center"><img src="assets/stack.svg" alt="Stats from my public repositories: projects, latest push, interests and languages" width="100%"></p>
 
@@ -34,4 +34,4 @@ I like projects that end in a measured answer: same test set, same budget, numbe
 
 ---
 
-<sub>🔁 This profile maintains itself. A [daily GitHub Action](.github/workflows/refresh.yml) rebuilds it from my pinned repos, recent pushes and languages, greets you in a new language each day, and files a [health check issue](https://github.com/HarshavardhanReddy585/HarshavardhanReddy585/issues?q=label%3Aprofile-health) listing what to improve next. Last refreshed 2026-11-07.</sub>
+<sub>🔁 This profile maintains itself. A [daily GitHub Action](.github/workflows/refresh.yml) rebuilds it from my pinned repos, recent pushes and languages, greets you in a new language each day, and files a [health check issue](https://github.com/HarshavardhanReddy585/HarshavardhanReddy585/issues?q=label%3Aprofile-health) listing what to improve next. Last refreshed 2026-11-08.</sub>
